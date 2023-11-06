@@ -1,9 +1,9 @@
 ## Import
 import os
 from flask import jsonify
-from .app import app
 from dotenv import find_dotenv, dotenv_values
-
+from .app import app
+from .auth.auth import AuthError
 
 ## Loading environement variable
 ENV_FILE = find_dotenv(raise_error_if_not_found = True)
@@ -72,3 +72,10 @@ def internal_server_error(error):
         'error': 500,
         'message': 'Internal Server Error'
     }), 500
+
+# error handler for AuthError
+@app.errorhandler(AuthError)
+def handle_auth_error(ex):
+    response = jsonify(ex.error)
+    response.status_code = ex.status_code
+    return response

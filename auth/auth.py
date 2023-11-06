@@ -1,7 +1,7 @@
 ## Imports
 import os
 import json
-from flask import request, _request_ctx_stack
+from flask import request
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
@@ -68,7 +68,7 @@ def get_token_auth_header():
 '''
 # @check_permissions(permission, payload) method
 #     @INPUTS
-#         permission: string permission (i.e. 'post:drink')
+#         permission: string permission
 #         payload: decoded jwt payload
 
 #     it should raise an AuthError if permissions are not included in the payload

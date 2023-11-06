@@ -22,7 +22,7 @@ def after_request(response):
     return response
 
 # index
-@app.route('/')
+@app.route('/index')
 def index():
     return jsonify({
         "success": True,
@@ -35,6 +35,7 @@ def index():
 #----------------------------------------------------------------------------#
 # Get all movies in short form
 @app.route('/movies', methods=['GET'])
+@requires_auth('get:movies')
 def get_movies():
     try:
         # DB query
@@ -56,8 +57,9 @@ def get_movies():
         abort(500)
 
 
-# Get movies details by movie_id
+# Get movies details (including involved actor) by movie_id
 @app.route('/movies/<int:movie_id>', methods=['GET'])
+@requires_auth('get:movie-details')
 def get_movie_details(movie_id):
     try:
         # Query the movie by movie_id
@@ -82,7 +84,7 @@ def get_movie_details(movie_id):
         return jsonify({
             'success': True,
             'movie_details': movie_details,
-            'actors': actors
+            'actors_involvement': actors
         })
     
     except Exception as e:
@@ -92,6 +94,7 @@ def get_movie_details(movie_id):
 
 # Create a new movie and return result with movie details
 @app.route('/movies', methods=['POST'])
+@requires_auth('post:movies')
 def create_movie():
     try:
         # Get data from the request JSON
@@ -122,7 +125,7 @@ def create_movie():
         return jsonify({
             'success': True,
             'message': 'Movie created successfully',
-            'movie': new_movie.format_details()
+            'movie_details': new_movie.format_details()
         })
     except Exception as e:
         db.session.rollback()
@@ -132,6 +135,7 @@ def create_movie():
 
 # Update movie details by movie_id
 @app.route('/movies/<int:movie_id>', methods=['PATCH'])
+@requires_auth('patch:movies')
 def update_movie(movie_id):
     try:
         movie = Movie.query.get(movie_id)
@@ -158,7 +162,7 @@ def update_movie(movie_id):
         return jsonify({
             'success': True,
             'message': 'Movie details updated successfully',
-            'movie': movie.format_details()
+            'movie_details': movie.format_details()
         })
     except Exception as e:
         db.session.rollback()
@@ -168,6 +172,7 @@ def update_movie(movie_id):
 
 # Delete a movie by movie_id
 @app.route('/movies/<int:movie_id>', methods=['DELETE'])
+@requires_auth('delete:movies')
 def delete_movie(movie_id):
     try:
         # Query
@@ -196,5 +201,157 @@ def delete_movie(movie_id):
 #----------------------------------------------------------------------------#
 # Endpoints for Actors.
 #----------------------------------------------------------------------------#
+# Get all actors in short form
+@app.route('/actors', methods=['GET'])
+@requires_auth('get:actors')
+def get_actors():
+    try:
+        # DB query
+        actors = Actor.query.all()
 
+        if not actors:
+            abort(404)
+
+        actors_list = [actor.format_short() for actor in actors]
+
+        # Result
+        return jsonify({
+            'success': True,
+            'actors': actors_list
+        })
+
+    except Exception as e:
+        print_debug(e)
+        abort(500)
+
+
+# Get actors details (including involving movies if any) by actor_id
+@app.route('/actors/<int:actor_id>', methods=['GET'])
+@requires_auth('get:actor-details')
+def get_actor_details(actor_id):
+    try:
+        # Query the actor by actor_id
+        actor = Actor.query.get(actor_id)
+
+        # not found
+        if actor is None:
+            abort(404)
+
+        # Get the list of movies involving the actor
+        movies = Movie.query.filter(Movie.actor_ids.contains([actor_id])).all()
+        movies_involvement = [
+                {'id': movie.id, 'title': movie.title} 
+                for movie in movies
+            ]
+
+        # Format actor and movies information
+        actor_details = actor.format_details()
+
+        return jsonify({
+            'success': True,
+            'actor_details': actor_details,
+            'movies_involvement': movies_involvement
+        })
+    
+    except Exception as e:
+        print_debug(e)
+        abort(500)
+
+
+# Create a new actor and return result with actor details
+@app.route('/actors', methods=['POST'])
+@requires_auth('post:actors')
+def create_actor():
+    try:
+        # Get data from the request JSON
+        data = request.get_json()
+        name = data.get('name')
+        age = data.get('age')
+        gender = data.get('gender')
+
+        # Check if required fields are provided
+        if not name or not gender:
+            abort(400, 'Name and gender are required fields')
+
+        # Create a new actor instance
+        new_actor = Actor(
+            name=name,
+            age=age,
+            gender=gender,
+        )
+
+        # Insert the new actor into the database
+        new_actor.insert()
+
+        # Return the actor details after insertion
+        return jsonify({
+            'success': True,
+            'message': 'actor created successfully',
+            'actor_details': new_actor.format_details()
+        })
+    except Exception as e:
+        db.session.rollback()
+        print_debug(e)
+        abort(500)
+
+
+# Update actor details by actor_id
+@app.route('/actors/<int:actor_id>', methods=['PATCH'])
+@requires_auth('patch:actors')
+def update_actor(actor_id):
+    try:
+        actor = Actor.query.get(actor_id)
+        if actor is None:
+            abort(404)
+
+        # get request data
+        data = request.get_json()
+        name = data.get('name')
+        age = data.get('age')
+        gender = data.get('gender')
+
+        # Update
+        actor.name = name
+        actor.age = age
+        actor.gender = gender
+        actor.update()
+
+        # result
+        return jsonify({
+            'success': True,
+            'message': 'actor details updated successfully',
+            'actor_details': actor.format_details()
+        })
+    except Exception as e:
+        db.session.rollback()
+        print_debug(e)
+        abort(500)
+
+
+# Delete a actor by actor_id
+@app.route('/actors/<int:actor_id>', methods=['DELETE'])
+@requires_auth('delete:actors')
+def delete_actor(actor_id):
+    try:
+        # Query
+        actor = Actor.query.get(actor_id)
+        if actor is None:
+            abort(404)
+
+        # delated actor name 
+        name = actor.name
+
+        # delete
+        actor.delete()
+
+        return jsonify({
+            'success': True,
+            'message': 'actor deleted successfully',
+            'deleted_actor_id': actor_id,
+            'deleted_actor_name': name
+        })
+    except Exception as e:
+        db.session.rollback()
+        print_debug(e)
+        abort(500)
 
