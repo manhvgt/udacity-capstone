@@ -1,22 +1,8 @@
 ## Import
 import os
 from flask import jsonify
-from dotenv import find_dotenv, dotenv_values
 from .app import app
 from .auth.auth import AuthError
-
-## Loading environement variable
-ENV_FILE = find_dotenv(raise_error_if_not_found = True)
-if ENV_FILE:
-    env = dotenv_values(ENV_FILE)
-
-
-## general function
-def print_debug(str):
-    debug_mode = os.getenv('DEBUG_MODE')
-    if not debug_mode:
-        print(str)
-
 
 ## General Error handling
 # error handler for 400 (Bad Request)

@@ -1,17 +1,38 @@
 ## Imports
 import os
 from flask import Flask, request, jsonify, abort
-import json
 from flask_cors import CORS
+from dotenv import find_dotenv, dotenv_values
+import json
 
-from .app import app
-from .database.models import Movie, Actor, db
+from .database.models import setup_db, Movie, Actor, db
 from .auth.auth import AuthError, requires_auth
-from .errors import print_debug
+
+
+## Loading environement variable
+# debug mode
+debug_mode = os.getenv('DEBUG_MODE')
+## Loading environement variable
+ENV_FILE = find_dotenv(raise_error_if_not_found = True)
+if ENV_FILE:
+    env = dotenv_values(ENV_FILE)
+
 
 #----------------------------------------------------------------------------#
-# General
+# Create app and config
 #----------------------------------------------------------------------------#
+app = Flask(__name__)
+
+# Setup db
+with app.app_context():
+    if not debug_mode:
+        setup_db(app)
+    else:
+        setup_db(app, debug_mode)
+
+# Set up CORS. Allow '*' for origins.
+CORS(app, resources={r"/*": {"origins": "*"}})
+
 # Use the after_request decorator to set Access-Control-Allow
 @app.after_request
 def after_request(response):
@@ -21,8 +42,18 @@ def after_request(response):
         , 'GET,POST,DELETE,PATCH,OPTIONS')
     return response
 
+#----------------------------------------------------------------------------#
+# General
+#----------------------------------------------------------------------------#
+## print debug
+def print_debug(str):
+    debug_mode = os.getenv('DEBUG_MODE')
+    if not debug_mode:
+        print(str)
+
 # index
-@app.route('/index')
+@app.route('/', methods=['GET'])
+# @app.route('/index')
 def index():
     return jsonify({
         "success": True,
@@ -35,7 +66,7 @@ def index():
 #----------------------------------------------------------------------------#
 # Get all movies in short form
 @app.route('/movies', methods=['GET'])
-@requires_auth('get:movies')
+# @requires_auth('get:movies')
 def get_movies():
     try:
         # DB query
@@ -59,7 +90,7 @@ def get_movies():
 
 # Get movies details (including involved actor) by movie_id
 @app.route('/movies/<int:movie_id>', methods=['GET'])
-@requires_auth('get:movie-details')
+# @requires_auth('get:movie-details')
 def get_movie_details(movie_id):
     try:
         # Query the movie by movie_id
@@ -94,7 +125,7 @@ def get_movie_details(movie_id):
 
 # Create a new movie and return result with movie details
 @app.route('/movies', methods=['POST'])
-@requires_auth('post:movies')
+# @requires_auth('post:movies')
 def create_movie():
     try:
         # Get data from the request JSON
@@ -135,7 +166,7 @@ def create_movie():
 
 # Update movie details by movie_id
 @app.route('/movies/<int:movie_id>', methods=['PATCH'])
-@requires_auth('patch:movies')
+# @requires_auth('patch:movies')
 def update_movie(movie_id):
     try:
         movie = Movie.query.get(movie_id)
@@ -172,7 +203,7 @@ def update_movie(movie_id):
 
 # Delete a movie by movie_id
 @app.route('/movies/<int:movie_id>', methods=['DELETE'])
-@requires_auth('delete:movies')
+# @requires_auth('delete:movies')
 def delete_movie(movie_id):
     try:
         # Query
@@ -203,7 +234,7 @@ def delete_movie(movie_id):
 #----------------------------------------------------------------------------#
 # Get all actors in short form
 @app.route('/actors', methods=['GET'])
-@requires_auth('get:actors')
+# @requires_auth('get:actors')
 def get_actors():
     try:
         # DB query
@@ -227,7 +258,7 @@ def get_actors():
 
 # Get actors details (including involving movies if any) by actor_id
 @app.route('/actors/<int:actor_id>', methods=['GET'])
-@requires_auth('get:actor-details')
+# @requires_auth('get:actor-details')
 def get_actor_details(actor_id):
     try:
         # Query the actor by actor_id
@@ -260,7 +291,7 @@ def get_actor_details(actor_id):
 
 # Create a new actor and return result with actor details
 @app.route('/actors', methods=['POST'])
-@requires_auth('post:actors')
+# @requires_auth('post:actors')
 def create_actor():
     try:
         # Get data from the request JSON
@@ -297,7 +328,7 @@ def create_actor():
 
 # Update actor details by actor_id
 @app.route('/actors/<int:actor_id>', methods=['PATCH'])
-@requires_auth('patch:actors')
+# @requires_auth('patch:actors')
 def update_actor(actor_id):
     try:
         actor = Actor.query.get(actor_id)
@@ -330,7 +361,7 @@ def update_actor(actor_id):
 
 # Delete a actor by actor_id
 @app.route('/actors/<int:actor_id>', methods=['DELETE'])
-@requires_auth('delete:actors')
+# @requires_auth('delete:actors')
 def delete_actor(actor_id):
     try:
         # Query
@@ -355,3 +386,6 @@ def delete_actor(actor_id):
         print_debug(e)
         abort(500)
 
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8080, debug=True)

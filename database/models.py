@@ -1,7 +1,8 @@
 ## Imports
 import os
 from dotenv import find_dotenv, dotenv_values
-from sqlalchemy import Column, String, Integer, create_engine
+from sqlalchemy import Column, String, Integer
+from sqlalchemy.dialects.postgresql import ARRAY
 from dotenv import find_dotenv, dotenv_values
 from flask_sqlalchemy import SQLAlchemy
 import json
@@ -12,7 +13,7 @@ ENV_FILE = find_dotenv(raise_error_if_not_found = True)
 if ENV_FILE:
     env = dotenv_values(ENV_FILE)
 
-db_host = os.getenv('DB_HOST')
+db_dns = os.getenv('DB_DNS')
 db_user = os.getenv('DB_USERNAME')
 db_password = os.getenv('DB_PASSWORD')
 db_name = os.getenv('DB_NAME')
@@ -25,7 +26,7 @@ db = SQLAlchemy()
 ## DB Function
 # Check if the environment variables are set
 def validate_db():
-    if db_host is None:
+    if db_dns is None:
         print("DB IP address and port are not set.")
         return False
     if db_user is None:
@@ -40,13 +41,17 @@ def validate_db():
     return True
 
 # Setup DB
-def setup_db(app, database_name=db_name):
+def setup_db(app, debug_mode=False):
     if not validate_db():
         raise Exception("DB variable is not set!")
+    
+    # update DB name base on test mode
+    database_name=db_name
+    if debug_mode:
+        database_name=os.getenv('DB_NAME_TEST')
+    database_path ="postgresql://{}:{}@{}/{}".format(db_user, db_password, db_dns, database_name)
 
-    database_path ="postgresql://{}:{}@{}/{}"\
-        .format(db_host, db_user, db_password, database_name)
-
+    # Config DB
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
@@ -65,14 +70,15 @@ class Movie(db.Model):
     release_date = db.Column(db.Date, nullable=False)
     casting_site = db.Column(db.String, nullable=True)
     revenue = db.Column(db.Integer, nullable=True)
-    actor_ids = db.Column(db.ARRAY(db.Integer), nullable=True)
+    actor_ids = db.Column(ARRAY(db.Integer), nullable=True)
 
 
-    def __init__(self, title, release_date, actor_ids=[], casting_site=None):
+    def __init__(self, title, release_date, actor_ids=[], casting_site=None, revenue=0):
         self.title = title
         self.release_date = release_date
         self.actor_ids = actor_ids
         self.casting_site = casting_site
+        self.revenue = revenue
 
     # format to json - short info
     def format_short(self):

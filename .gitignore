@@ -1,5 +1,6 @@
 *.DS_Store
 .env*
+venv
 .flaskenv
 *.pyc
 *.pyo
@@ -11,3 +12,5 @@ __pycache__
 .github/**
 .vscode
 *.log
+*.sql
+test.py
