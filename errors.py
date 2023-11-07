@@ -1,7 +1,7 @@
 ## Import
 import os
 from flask import jsonify
-from .app import app
+from .main import app
 from .auth.auth import AuthError
 
 ## General Error handling
