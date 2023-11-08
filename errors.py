@@ -1,8 +1,8 @@
 ## Import
 import os
 from flask import jsonify
-from .main import app
-from .auth.auth import AuthError
+from main import app
+from auth.auth import AuthError
 
 ## General Error handling
 # error handler for 400 (Bad Request)

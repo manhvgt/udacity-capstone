@@ -5,8 +5,8 @@ from flask_cors import CORS
 from dotenv import find_dotenv, dotenv_values
 import json
 
-from .database.models import setup_db, Movie, Actor, db
-from .auth.auth import requires_auth
+from database.models import setup_db, Movie, Actor, db
+from auth.auth import requires_auth
 
 
 ## Loading environement variable
@@ -19,6 +19,7 @@ debug_mode = os.getenv('DEBUG_MODE')
 #----------------------------------------------------------------------------#
 # Create app and config
 #----------------------------------------------------------------------------#
+
 app = Flask(__name__)
 # Setup db
 with app.app_context():

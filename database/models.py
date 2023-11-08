@@ -42,12 +42,11 @@ def validate_db():
 
 # Setup DB
 def setup_db(app, debug_mode):
-    if not validate_db():
-        raise Exception("DB variable is not set!")
-    
     # update DB name base on test mode
-    database_path=db_url
+    database_path = env['DB_URL']
     if debug_mode:
+        if not validate_db():
+            raise Exception("DB variable is not set!")
         database_name=db_name_test
         database_path ="postgresql://{}:{}@{}/{}".format(db_user, db_password, db_dns, database_name)
 
