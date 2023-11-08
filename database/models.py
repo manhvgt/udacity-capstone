@@ -3,7 +3,6 @@ import os
 from dotenv import find_dotenv, dotenv_values
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.dialects.postgresql import ARRAY
-from dotenv import find_dotenv, dotenv_values
 from flask_sqlalchemy import SQLAlchemy
 import json
 
@@ -17,7 +16,8 @@ db_dns = os.getenv('DB_DNS')
 db_user = os.getenv('DB_USERNAME')
 db_password = os.getenv('DB_PASSWORD')
 db_name = os.getenv('DB_NAME')
-
+db_name_test = os.getenv('DB_NAME_TEST')
+db_url = os.getenv('DB_URL')
 
 ## Setup DB
 db = SQLAlchemy()
@@ -41,15 +41,15 @@ def validate_db():
     return True
 
 # Setup DB
-def setup_db(app, debug_mode=False):
+def setup_db(app, debug_mode):
     if not validate_db():
         raise Exception("DB variable is not set!")
     
     # update DB name base on test mode
-    database_name=db_name
+    database_path=db_url
     if debug_mode:
-        database_name=os.getenv('DB_NAME_TEST')
-    database_path ="postgresql://{}:{}@{}/{}".format(db_user, db_password, db_dns, database_name)
+        database_name=db_name_test
+        database_path ="postgresql://{}:{}@{}/{}".format(db_user, db_password, db_dns, database_name)
 
     # Config DB
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path

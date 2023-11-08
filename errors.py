@@ -61,6 +61,7 @@ def internal_server_error(error):
 
 # error handler for AuthError
 @app.errorhandler(AuthError)
+# @app.handle_exception(AuthError)
 def handle_auth_error(ex):
     response = jsonify(ex.error)
     response.status_code = ex.status_code
