@@ -8,6 +8,11 @@ import json
 from database.models import setup_db, Movie, Actor, db
 from auth.auth import requires_auth
 
+#----------------------------------------------------------------------------#
+# Create app and config
+#----------------------------------------------------------------------------#
+
+app = Flask(__name__)
 
 ## Loading environement variable
 ENV_FILE = find_dotenv(raise_error_if_not_found = True)
@@ -15,12 +20,8 @@ if ENV_FILE:
     env = dotenv_values(ENV_FILE)
 
 debug_mode = os.getenv('DEBUG_MODE')
+login_url = env['LOGIN_URL']
 
-#----------------------------------------------------------------------------#
-# Create app and config
-#----------------------------------------------------------------------------#
-
-app = Flask(__name__)
 # Setup db
 with app.app_context():
     setup_db(app, debug_mode)
@@ -47,7 +48,6 @@ def print_debug(str):
         print(str)
 
 # index
-@app.route('/', methods=['GET'])
 @app.route('/index')
 def index():
     return jsonify({
@@ -56,9 +56,9 @@ def index():
     })
 
 # login
+@app.route('/')
 @app.route('/login')
 def login():
-    login_url = os.getenv('LOGIN_URL')
     return redirect(login_url, code=302)
 
 #----------------------------------------------------------------------------#
