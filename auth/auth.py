@@ -5,13 +5,13 @@ from flask import request
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
-from dotenv import find_dotenv, dotenv_values
+from dotenv import find_dotenv, load_dotenv
 
 
 ## Loading environement variable
 ENV_FILE = find_dotenv(raise_error_if_not_found = True)
 if ENV_FILE:
-    env = dotenv_values(ENV_FILE)
+    load_dotenv()
 
 AUTH0_DOMAIN = os.getenv('AUTH0_DOMAIN')
 ALGORITHMS = os.getenv('ALGORITHMS')
@@ -102,8 +102,6 @@ def check_permissions(permission, payload):
     it should decode the payload from the token
     it should validate the claims
     return the decoded payload
-
-    !!NOTE urlopen has a common certificate error described here: https://stackoverflow.com/questions/50236117/scraping-ssl-certificate-verify-failed-error-for-http-en-wikipedia-org
 '''
 def verify_decode_jwt(token):
     jsonurl = urlopen(f'https://{AUTH0_DOMAIN}/.well-known/jwks.json')

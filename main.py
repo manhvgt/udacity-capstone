@@ -2,7 +2,7 @@
 import os
 from flask import Flask, request, jsonify, abort, redirect, url_for
 from flask_cors import CORS
-from dotenv import find_dotenv, dotenv_values
+from dotenv import find_dotenv, load_dotenv
 import json
 
 from database.models import setup_db, Movie, Actor, db
@@ -17,10 +17,10 @@ app = Flask(__name__)
 ## Loading environement variable
 ENV_FILE = find_dotenv(raise_error_if_not_found = True)
 if ENV_FILE:
-    env = dotenv_values(ENV_FILE)
+    load_dotenv()
 
 debug_mode = os.getenv('DEBUG_MODE')
-login_url = env['LOGIN_URL']
+login_url = os.getenv('LOGIN_URL')
 
 # Setup db
 with app.app_context():

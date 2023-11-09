@@ -1,6 +1,6 @@
 ## Imports
 import os
-from dotenv import find_dotenv, dotenv_values
+from dotenv import find_dotenv, load_dotenv
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.dialects.postgresql import ARRAY
 from flask_sqlalchemy import SQLAlchemy
@@ -10,7 +10,7 @@ import json
 ## Loading environement variable
 ENV_FILE = find_dotenv(raise_error_if_not_found = True)
 if ENV_FILE:
-    env = dotenv_values(ENV_FILE)
+    load_dotenv()
 
 db_dns = os.getenv('DB_DNS')
 db_user = os.getenv('DB_USERNAME')
@@ -35,15 +35,15 @@ def validate_db():
     if db_password is None:
         print("DB user password is not set.")
         return False
-    if db_name is None:
-        print("Database name is not set.")
+    if db_name_test is None:
+        print("Database name for testing is not set.")
         return False
     return True
 
 # Setup DB
 def setup_db(app, debug_mode):
     # update DB name base on test mode
-    database_path = env['DB_URL']
+    database_path = os.getenv('DB_URL')
     if debug_mode:
         if not validate_db():
             raise Exception("DB variable is not set!")
