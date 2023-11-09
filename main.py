@@ -1,6 +1,6 @@
 ## Imports
 import os
-from flask import Flask, request, jsonify, abort, redirect
+from flask import Flask, request, jsonify, abort, redirect, url_for
 from flask_cors import CORS
 from dotenv import find_dotenv, dotenv_values
 import json
@@ -60,6 +60,11 @@ def index():
 @app.route('/login')
 def login():
     return redirect(login_url, code=302)
+
+# login result
+@app.route('/login-result')
+def login_result():
+    return redirect(url_for('index'))
 
 #----------------------------------------------------------------------------#
 # Endpoints for Movies.
