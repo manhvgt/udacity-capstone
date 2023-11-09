@@ -7,134 +7,43 @@
 	},
 	"item": [
 		{
-			"name": "movies",
+			"name": "public",
 			"item": [
 				{
-					"name": "GET /movies",
+					"name": "GET /index",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/movies",
-							"protocol": "http",
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/index",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
 							],
-							"port": "5000",
 							"path": [
-								"movies"
+								"index"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "GET /movies/id",
+					"name": "GET /login",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/movies/1",
-							"protocol": "http",
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/login",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
 							],
-							"port": "5000",
 							"path": [
-								"movies",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST /movies",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\": \"self.title\",\n    \"release_date\": \"2023-10-24T10:10:10.000\",\n    \"casting_site\": \"self.casting_site\",\n    \"revenue\": 12345,\n    \"actor_ids\": []\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:5000/movies",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"movies"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST /movies/id",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\": \"Pirates of the Caribbean\",\n    \"release_date\": \"2020-10-24T10:10:10.000\",\n    \"casting_site\": \"Caribbean\",\n    \"revenue\": 123456,\n    \"actor_ids\": [1,2]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:5000/movies/1",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"movies",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE /movies/id",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:5000/movies/2",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"movies",
-								"2"
+								"login"
 							]
 						}
 					},
@@ -143,23 +52,31 @@
 			]
 		},
 		{
-			"name": "actors",
+			"name": "CastingAssistant",
 			"item": [
 				{
 					"name": "GET /actors",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NGJiM2I2MTY1YzVkZGRlNmZjNTg0YiIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NTQ1MzIzLCJleHAiOjE2OTk2MzE3MjMsImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3ItZGV0YWlscyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWUtZGV0YWlscyIsImdldDptb3ZpZXMiXX0.PM9yt361_U6DWFOIsomATpN7SnFf7JeuF95TroA45SKmVGuP9Rggwh6HjrNTx5gzspDlB1-aH5cgOwsTfNiobro_ifcd6dPEXU9Q3daDlJdF2MKrBKtLdUuEN5D6TWXuYZeYbNLp65MDDgBH7ffScq0VBc1ZV5mh2RDNZ2bfASOHPJHBqSfqqDsL7PAgp4JI7CirVreBel6BX7R5LB_Ax1BBEFi30_dRKFX90ScafmEYgu5G480kl1qTKyRgdYLjnqQPGS9_Eb9VxWdLukSXPs6FHkTf_Bi1Ddse4ivWfdHzvcZg0C_uZBTPHPSsmCskCQNNiN4HYvkR-9MVlYjamw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/actors",
-							"protocol": "http",
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"actors"
 							]
@@ -170,18 +87,26 @@
 				{
 					"name": "GET /actors/id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NGJiM2I2MTY1YzVkZGRlNmZjNTg0YiIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NTQ1MzIzLCJleHAiOjE2OTk2MzE3MjMsImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3ItZGV0YWlscyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWUtZGV0YWlscyIsImdldDptb3ZpZXMiXX0.PM9yt361_U6DWFOIsomATpN7SnFf7JeuF95TroA45SKmVGuP9Rggwh6HjrNTx5gzspDlB1-aH5cgOwsTfNiobro_ifcd6dPEXU9Q3daDlJdF2MKrBKtLdUuEN5D6TWXuYZeYbNLp65MDDgBH7ffScq0VBc1ZV5mh2RDNZ2bfASOHPJHBqSfqqDsL7PAgp4JI7CirVreBel6BX7R5LB_Ax1BBEFi30_dRKFX90ScafmEYgu5G480kl1qTKyRgdYLjnqQPGS9_Eb9VxWdLukSXPs6FHkTf_Bi1Ddse4ivWfdHzvcZg0C_uZBTPHPSsmCskCQNNiN4HYvkR-9MVlYjamw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/actors/1",
-							"protocol": "http",
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors/1",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"actors",
 								"1"
@@ -193,6 +118,16 @@
 				{
 					"name": "POST /actors",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NGJiM2I2MTY1YzVkZGRlNmZjNTg0YiIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NTQ1MzIzLCJleHAiOjE2OTk2MzE3MjMsImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3ItZGV0YWlscyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWUtZGV0YWlscyIsImdldDptb3ZpZXMiXX0.PM9yt361_U6DWFOIsomATpN7SnFf7JeuF95TroA45SKmVGuP9Rggwh6HjrNTx5gzspDlB1-aH5cgOwsTfNiobro_ifcd6dPEXU9Q3daDlJdF2MKrBKtLdUuEN5D6TWXuYZeYbNLp65MDDgBH7ffScq0VBc1ZV5mh2RDNZ2bfASOHPJHBqSfqqDsL7PAgp4JI7CirVreBel6BX7R5LB_Ax1BBEFi30_dRKFX90ScafmEYgu5G480kl1qTKyRgdYLjnqQPGS9_Eb9VxWdLukSXPs6FHkTf_Bi1Ddse4ivWfdHzvcZg0C_uZBTPHPSsmCskCQNNiN4HYvkR-9MVlYjamw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -205,15 +140,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/actors",
-							"protocol": "http",
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"actors"
 							]
@@ -224,6 +157,16 @@
 				{
 					"name": "POST /actors/id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NGJiM2I2MTY1YzVkZGRlNmZjNTg0YiIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NTQ1MzIzLCJleHAiOjE2OTk2MzE3MjMsImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3ItZGV0YWlscyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWUtZGV0YWlscyIsImdldDptb3ZpZXMiXX0.PM9yt361_U6DWFOIsomATpN7SnFf7JeuF95TroA45SKmVGuP9Rggwh6HjrNTx5gzspDlB1-aH5cgOwsTfNiobro_ifcd6dPEXU9Q3daDlJdF2MKrBKtLdUuEN5D6TWXuYZeYbNLp65MDDgBH7ffScq0VBc1ZV5mh2RDNZ2bfASOHPJHBqSfqqDsL7PAgp4JI7CirVreBel6BX7R5LB_Ax1BBEFi30_dRKFX90ScafmEYgu5G480kl1qTKyRgdYLjnqQPGS9_Eb9VxWdLukSXPs6FHkTf_Bi1Ddse4ivWfdHzvcZg0C_uZBTPHPSsmCskCQNNiN4HYvkR-9MVlYjamw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
 						"header": [],
 						"body": {
@@ -236,15 +179,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/actors/1",
-							"protocol": "http",
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors/1",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"actors",
 								"1"
@@ -256,20 +197,199 @@
 				{
 					"name": "DELETE /actors/id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NGJiM2I2MTY1YzVkZGRlNmZjNTg0YiIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NTQ1MzIzLCJleHAiOjE2OTk2MzE3MjMsImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3ItZGV0YWlscyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWUtZGV0YWlscyIsImdldDptb3ZpZXMiXX0.PM9yt361_U6DWFOIsomATpN7SnFf7JeuF95TroA45SKmVGuP9Rggwh6HjrNTx5gzspDlB1-aH5cgOwsTfNiobro_ifcd6dPEXU9Q3daDlJdF2MKrBKtLdUuEN5D6TWXuYZeYbNLp65MDDgBH7ffScq0VBc1ZV5mh2RDNZ2bfASOHPJHBqSfqqDsL7PAgp4JI7CirVreBel6BX7R5LB_Ax1BBEFi30_dRKFX90ScafmEYgu5G480kl1qTKyRgdYLjnqQPGS9_Eb9VxWdLukSXPs6FHkTf_Bi1Ddse4ivWfdHzvcZg0C_uZBTPHPSsmCskCQNNiN4HYvkR-9MVlYjamw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/actors/2",
-							"protocol": "http",
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors/2",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"actors",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NGJiM2I2MTY1YzVkZGRlNmZjNTg0YiIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NTQ1MzIzLCJleHAiOjE2OTk2MzE3MjMsImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3ItZGV0YWlscyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWUtZGV0YWlscyIsImdldDptb3ZpZXMiXX0.PM9yt361_U6DWFOIsomATpN7SnFf7JeuF95TroA45SKmVGuP9Rggwh6HjrNTx5gzspDlB1-aH5cgOwsTfNiobro_ifcd6dPEXU9Q3daDlJdF2MKrBKtLdUuEN5D6TWXuYZeYbNLp65MDDgBH7ffScq0VBc1ZV5mh2RDNZ2bfASOHPJHBqSfqqDsL7PAgp4JI7CirVreBel6BX7R5LB_Ax1BBEFi30_dRKFX90ScafmEYgu5G480kl1qTKyRgdYLjnqQPGS9_Eb9VxWdLukSXPs6FHkTf_Bi1Ddse4ivWfdHzvcZg0C_uZBTPHPSsmCskCQNNiN4HYvkR-9MVlYjamw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /movies/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NGJiM2I2MTY1YzVkZGRlNmZjNTg0YiIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NTQ1MzIzLCJleHAiOjE2OTk2MzE3MjMsImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3ItZGV0YWlscyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWUtZGV0YWlscyIsImdldDptb3ZpZXMiXX0.PM9yt361_U6DWFOIsomATpN7SnFf7JeuF95TroA45SKmVGuP9Rggwh6HjrNTx5gzspDlB1-aH5cgOwsTfNiobro_ifcd6dPEXU9Q3daDlJdF2MKrBKtLdUuEN5D6TWXuYZeYbNLp65MDDgBH7ffScq0VBc1ZV5mh2RDNZ2bfASOHPJHBqSfqqDsL7PAgp4JI7CirVreBel6BX7R5LB_Ax1BBEFi30_dRKFX90ScafmEYgu5G480kl1qTKyRgdYLjnqQPGS9_Eb9VxWdLukSXPs6FHkTf_Bi1Ddse4ivWfdHzvcZg0C_uZBTPHPSsmCskCQNNiN4HYvkR-9MVlYjamw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies/1",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NGJiM2I2MTY1YzVkZGRlNmZjNTg0YiIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NTQ1MzIzLCJleHAiOjE2OTk2MzE3MjMsImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3ItZGV0YWlscyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWUtZGV0YWlscyIsImdldDptb3ZpZXMiXX0.PM9yt361_U6DWFOIsomATpN7SnFf7JeuF95TroA45SKmVGuP9Rggwh6HjrNTx5gzspDlB1-aH5cgOwsTfNiobro_ifcd6dPEXU9Q3daDlJdF2MKrBKtLdUuEN5D6TWXuYZeYbNLp65MDDgBH7ffScq0VBc1ZV5mh2RDNZ2bfASOHPJHBqSfqqDsL7PAgp4JI7CirVreBel6BX7R5LB_Ax1BBEFi30_dRKFX90ScafmEYgu5G480kl1qTKyRgdYLjnqQPGS9_Eb9VxWdLukSXPs6FHkTf_Bi1Ddse4ivWfdHzvcZg0C_uZBTPHPSsmCskCQNNiN4HYvkR-9MVlYjamw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"a new movie\",\n    \"release_date\": \"2023-10-24T10:10:10.000\",\n    \"casting_site\": \"Hanoi\",\n    \"revenue\": 123456,\n    \"actor_ids\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /movies/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NGJiM2I2MTY1YzVkZGRlNmZjNTg0YiIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NTQ1MzIzLCJleHAiOjE2OTk2MzE3MjMsImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3ItZGV0YWlscyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWUtZGV0YWlscyIsImdldDptb3ZpZXMiXX0.PM9yt361_U6DWFOIsomATpN7SnFf7JeuF95TroA45SKmVGuP9Rggwh6HjrNTx5gzspDlB1-aH5cgOwsTfNiobro_ifcd6dPEXU9Q3daDlJdF2MKrBKtLdUuEN5D6TWXuYZeYbNLp65MDDgBH7ffScq0VBc1ZV5mh2RDNZ2bfASOHPJHBqSfqqDsL7PAgp4JI7CirVreBel6BX7R5LB_Ax1BBEFi30_dRKFX90ScafmEYgu5G480kl1qTKyRgdYLjnqQPGS9_Eb9VxWdLukSXPs6FHkTf_Bi1Ddse4ivWfdHzvcZg0C_uZBTPHPSsmCskCQNNiN4HYvkR-9MVlYjamw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Pirates of the Caribbean\",\n    \"release_date\": \"2020-10-24T10:10:10.000\",\n    \"casting_site\": \"Caribbean\",\n    \"revenue\": 123456,\n    \"actor_ids\": [1,2]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies/1",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /movies/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NGJiM2I2MTY1YzVkZGRlNmZjNTg0YiIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NTQ1MzIzLCJleHAiOjE2OTk2MzE3MjMsImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3ItZGV0YWlscyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWUtZGV0YWlscyIsImdldDptb3ZpZXMiXX0.PM9yt361_U6DWFOIsomATpN7SnFf7JeuF95TroA45SKmVGuP9Rggwh6HjrNTx5gzspDlB1-aH5cgOwsTfNiobro_ifcd6dPEXU9Q3daDlJdF2MKrBKtLdUuEN5D6TWXuYZeYbNLp65MDDgBH7ffScq0VBc1ZV5mh2RDNZ2bfASOHPJHBqSfqqDsL7PAgp4JI7CirVreBel6BX7R5LB_Ax1BBEFi30_dRKFX90ScafmEYgu5G480kl1qTKyRgdYLjnqQPGS9_Eb9VxWdLukSXPs6FHkTf_Bi1Ddse4ivWfdHzvcZg0C_uZBTPHPSsmCskCQNNiN4HYvkR-9MVlYjamw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies/2",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies",
 								"2"
 							]
 						}
@@ -279,26 +399,698 @@
 			]
 		},
 		{
-			"name": "GET /",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:5000/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5000",
-					"path": [
-						""
-					]
+			"name": "CastingDirector",
+			"item": [
+				{
+					"name": "GET /actors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NDYwMDJlYTZkNzEzMmVmMjIzZWQ4MyIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NDYwNTI5LCJleHAiOjE2OTk1NDY5MjksImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiXX0.MQOw4kn0sMx8ZwR53Npb8oms6aV2qddQ5bIVNF-hYdFspu8HNm6U5Cti058haNsUadAzvzUN8DQblrPFtN8ttAp2ELY1gCVWBfYi1O95I-sOFzUe7Uwj2_iEthCPRZ8__psZYAZnvxy377hB1UnpZqN1DMMzfqw8OeCOu-npzLv_j5MS9jEM0tZZ5UWuajuhq8KLwBEbgskUCa6xxPiq-h92T4IMHKbOu1bwCh74GFb--BFZ7fwXKLzJpA3hpUIn2XJgatGGaMgtruJ_nJizx-s6gjfsPLfe8Nb3DPwHu0YwUeubQb258fHdV37dXwGGdhXPrUEbiSbD_fPEap1pHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /actors/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NDYwMDJlYTZkNzEzMmVmMjIzZWQ4MyIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NDYwNTI5LCJleHAiOjE2OTk1NDY5MjksImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiXX0.MQOw4kn0sMx8ZwR53Npb8oms6aV2qddQ5bIVNF-hYdFspu8HNm6U5Cti058haNsUadAzvzUN8DQblrPFtN8ttAp2ELY1gCVWBfYi1O95I-sOFzUe7Uwj2_iEthCPRZ8__psZYAZnvxy377hB1UnpZqN1DMMzfqw8OeCOu-npzLv_j5MS9jEM0tZZ5UWuajuhq8KLwBEbgskUCa6xxPiq-h92T4IMHKbOu1bwCh74GFb--BFZ7fwXKLzJpA3hpUIn2XJgatGGaMgtruJ_nJizx-s6gjfsPLfe8Nb3DPwHu0YwUeubQb258fHdV37dXwGGdhXPrUEbiSbD_fPEap1pHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /actors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NDYwMDJlYTZkNzEzMmVmMjIzZWQ4MyIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NDYwNTI5LCJleHAiOjE2OTk1NDY5MjksImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiXX0.MQOw4kn0sMx8ZwR53Npb8oms6aV2qddQ5bIVNF-hYdFspu8HNm6U5Cti058haNsUadAzvzUN8DQblrPFtN8ttAp2ELY1gCVWBfYi1O95I-sOFzUe7Uwj2_iEthCPRZ8__psZYAZnvxy377hB1UnpZqN1DMMzfqw8OeCOu-npzLv_j5MS9jEM0tZZ5UWuajuhq8KLwBEbgskUCa6xxPiq-h92T4IMHKbOu1bwCh74GFb--BFZ7fwXKLzJpA3hpUIn2XJgatGGaMgtruJ_nJizx-s6gjfsPLfe8Nb3DPwHu0YwUeubQb258fHdV37dXwGGdhXPrUEbiSbD_fPEap1pHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Amber Heard\",\n    \"age\": 40,\n    \"gender\": \"female\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /actors/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NDYwMDJlYTZkNzEzMmVmMjIzZWQ4MyIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NDYwNTI5LCJleHAiOjE2OTk1NDY5MjksImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiXX0.MQOw4kn0sMx8ZwR53Npb8oms6aV2qddQ5bIVNF-hYdFspu8HNm6U5Cti058haNsUadAzvzUN8DQblrPFtN8ttAp2ELY1gCVWBfYi1O95I-sOFzUe7Uwj2_iEthCPRZ8__psZYAZnvxy377hB1UnpZqN1DMMzfqw8OeCOu-npzLv_j5MS9jEM0tZZ5UWuajuhq8KLwBEbgskUCa6xxPiq-h92T4IMHKbOu1bwCh74GFb--BFZ7fwXKLzJpA3hpUIn2XJgatGGaMgtruJ_nJizx-s6gjfsPLfe8Nb3DPwHu0YwUeubQb258fHdV37dXwGGdhXPrUEbiSbD_fPEap1pHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Johnny Depp\",\n    \"age\": 43,\n    \"gender\": \"male\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /actors/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NDYwMDJlYTZkNzEzMmVmMjIzZWQ4MyIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NDYwNTI5LCJleHAiOjE2OTk1NDY5MjksImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiXX0.MQOw4kn0sMx8ZwR53Npb8oms6aV2qddQ5bIVNF-hYdFspu8HNm6U5Cti058haNsUadAzvzUN8DQblrPFtN8ttAp2ELY1gCVWBfYi1O95I-sOFzUe7Uwj2_iEthCPRZ8__psZYAZnvxy377hB1UnpZqN1DMMzfqw8OeCOu-npzLv_j5MS9jEM0tZZ5UWuajuhq8KLwBEbgskUCa6xxPiq-h92T4IMHKbOu1bwCh74GFb--BFZ7fwXKLzJpA3hpUIn2XJgatGGaMgtruJ_nJizx-s6gjfsPLfe8Nb3DPwHu0YwUeubQb258fHdV37dXwGGdhXPrUEbiSbD_fPEap1pHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors/2",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"actors",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NDYwMDJlYTZkNzEzMmVmMjIzZWQ4MyIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NDYwNTI5LCJleHAiOjE2OTk1NDY5MjksImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiXX0.MQOw4kn0sMx8ZwR53Npb8oms6aV2qddQ5bIVNF-hYdFspu8HNm6U5Cti058haNsUadAzvzUN8DQblrPFtN8ttAp2ELY1gCVWBfYi1O95I-sOFzUe7Uwj2_iEthCPRZ8__psZYAZnvxy377hB1UnpZqN1DMMzfqw8OeCOu-npzLv_j5MS9jEM0tZZ5UWuajuhq8KLwBEbgskUCa6xxPiq-h92T4IMHKbOu1bwCh74GFb--BFZ7fwXKLzJpA3hpUIn2XJgatGGaMgtruJ_nJizx-s6gjfsPLfe8Nb3DPwHu0YwUeubQb258fHdV37dXwGGdhXPrUEbiSbD_fPEap1pHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /movies/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NDYwMDJlYTZkNzEzMmVmMjIzZWQ4MyIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NDYwNTI5LCJleHAiOjE2OTk1NDY5MjksImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiXX0.MQOw4kn0sMx8ZwR53Npb8oms6aV2qddQ5bIVNF-hYdFspu8HNm6U5Cti058haNsUadAzvzUN8DQblrPFtN8ttAp2ELY1gCVWBfYi1O95I-sOFzUe7Uwj2_iEthCPRZ8__psZYAZnvxy377hB1UnpZqN1DMMzfqw8OeCOu-npzLv_j5MS9jEM0tZZ5UWuajuhq8KLwBEbgskUCa6xxPiq-h92T4IMHKbOu1bwCh74GFb--BFZ7fwXKLzJpA3hpUIn2XJgatGGaMgtruJ_nJizx-s6gjfsPLfe8Nb3DPwHu0YwUeubQb258fHdV37dXwGGdhXPrUEbiSbD_fPEap1pHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies/1",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NDYwMDJlYTZkNzEzMmVmMjIzZWQ4MyIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NDYwNTI5LCJleHAiOjE2OTk1NDY5MjksImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiXX0.MQOw4kn0sMx8ZwR53Npb8oms6aV2qddQ5bIVNF-hYdFspu8HNm6U5Cti058haNsUadAzvzUN8DQblrPFtN8ttAp2ELY1gCVWBfYi1O95I-sOFzUe7Uwj2_iEthCPRZ8__psZYAZnvxy377hB1UnpZqN1DMMzfqw8OeCOu-npzLv_j5MS9jEM0tZZ5UWuajuhq8KLwBEbgskUCa6xxPiq-h92T4IMHKbOu1bwCh74GFb--BFZ7fwXKLzJpA3hpUIn2XJgatGGaMgtruJ_nJizx-s6gjfsPLfe8Nb3DPwHu0YwUeubQb258fHdV37dXwGGdhXPrUEbiSbD_fPEap1pHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"a new movie\",\n    \"release_date\": \"2023-10-24T10:10:10.000\",\n    \"casting_site\": \"Hanoi\",\n    \"revenue\": 123456,\n    \"actor_ids\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /movies/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NDYwMDJlYTZkNzEzMmVmMjIzZWQ4MyIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NDYwNTI5LCJleHAiOjE2OTk1NDY5MjksImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiXX0.MQOw4kn0sMx8ZwR53Npb8oms6aV2qddQ5bIVNF-hYdFspu8HNm6U5Cti058haNsUadAzvzUN8DQblrPFtN8ttAp2ELY1gCVWBfYi1O95I-sOFzUe7Uwj2_iEthCPRZ8__psZYAZnvxy377hB1UnpZqN1DMMzfqw8OeCOu-npzLv_j5MS9jEM0tZZ5UWuajuhq8KLwBEbgskUCa6xxPiq-h92T4IMHKbOu1bwCh74GFb--BFZ7fwXKLzJpA3hpUIn2XJgatGGaMgtruJ_nJizx-s6gjfsPLfe8Nb3DPwHu0YwUeubQb258fHdV37dXwGGdhXPrUEbiSbD_fPEap1pHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Pirates of the Caribbean\",\n    \"release_date\": \"2020-10-24T10:10:10.000\",\n    \"casting_site\": \"Caribbean\",\n    \"revenue\": 123456,\n    \"actor_ids\": [1,2]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies/1",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /movies/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY1NDYwMDJlYTZkNzEzMmVmMjIzZWQ4MyIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjk5NDYwNTI5LCJleHAiOjE2OTk1NDY5MjksImF6cCI6IkFaTUFJN1AzeldHbHpVMWd1WU5DZmY5OFhrTEpIdThtIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiXX0.MQOw4kn0sMx8ZwR53Npb8oms6aV2qddQ5bIVNF-hYdFspu8HNm6U5Cti058haNsUadAzvzUN8DQblrPFtN8ttAp2ELY1gCVWBfYi1O95I-sOFzUe7Uwj2_iEthCPRZ8__psZYAZnvxy377hB1UnpZqN1DMMzfqw8OeCOu-npzLv_j5MS9jEM0tZZ5UWuajuhq8KLwBEbgskUCa6xxPiq-h92T4IMHKbOu1bwCh74GFb--BFZ7fwXKLzJpA3hpUIn2XJgatGGaMgtruJ_nJizx-s6gjfsPLfe8Nb3DPwHu0YwUeubQb258fHdV37dXwGGdhXPrUEbiSbD_fPEap1pHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies/2",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies",
+								"2"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "ExecutiveProducer",
+			"item": [
+				{
+					"name": "GET /actors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE2MjUzNDI5NDkwMjUyMzkzMzQ0IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE2OTk1NDU4MDksImV4cCI6MTY5OTYzMjIwOSwiYXpwIjoiQVpNQUk3UDN6V0dselUxZ3VZTkNmZjk4WGtMSkh1OG0iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.k45_Dk6lfbS-JTjrJmxk4jNWmbcOctIr9DHjSfBELmvyD2R8X-LH9lCLhibsRWA0s5dtJII6aUc5aAoO8kwREMglqAuWPzIxpqoHyLEsR3wDvKYFr-Hj4LVxwe89Pb8BFKhKDisIWHvwME1Ll7-sfzAYlRvDeoEBPKVRTbGxmzUOfC5Rt04FqHHpI_TURe5YeqkQnyYYe0ZUL6JkbGjY74UcSA8jAMN6uYAOfCru_zNxfgcUTVqW3A72qMSlVT2PKIJrYbpAOWvFJ7XJJG0a-0ERreCbmZ1gzRtF0IagxmkI9X3-Me0aQu7yceq8ZOouAZKZY5t-_d0Vq10wQHta0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /actors/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE2MjUzNDI5NDkwMjUyMzkzMzQ0IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE2OTk1NDU4MDksImV4cCI6MTY5OTYzMjIwOSwiYXpwIjoiQVpNQUk3UDN6V0dselUxZ3VZTkNmZjk4WGtMSkh1OG0iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.k45_Dk6lfbS-JTjrJmxk4jNWmbcOctIr9DHjSfBELmvyD2R8X-LH9lCLhibsRWA0s5dtJII6aUc5aAoO8kwREMglqAuWPzIxpqoHyLEsR3wDvKYFr-Hj4LVxwe89Pb8BFKhKDisIWHvwME1Ll7-sfzAYlRvDeoEBPKVRTbGxmzUOfC5Rt04FqHHpI_TURe5YeqkQnyYYe0ZUL6JkbGjY74UcSA8jAMN6uYAOfCru_zNxfgcUTVqW3A72qMSlVT2PKIJrYbpAOWvFJ7XJJG0a-0ERreCbmZ1gzRtF0IagxmkI9X3-Me0aQu7yceq8ZOouAZKZY5t-_d0Vq10wQHta0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /actors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE2MjUzNDI5NDkwMjUyMzkzMzQ0IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE2OTk1NDU4MDksImV4cCI6MTY5OTYzMjIwOSwiYXpwIjoiQVpNQUk3UDN6V0dselUxZ3VZTkNmZjk4WGtMSkh1OG0iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.k45_Dk6lfbS-JTjrJmxk4jNWmbcOctIr9DHjSfBELmvyD2R8X-LH9lCLhibsRWA0s5dtJII6aUc5aAoO8kwREMglqAuWPzIxpqoHyLEsR3wDvKYFr-Hj4LVxwe89Pb8BFKhKDisIWHvwME1Ll7-sfzAYlRvDeoEBPKVRTbGxmzUOfC5Rt04FqHHpI_TURe5YeqkQnyYYe0ZUL6JkbGjY74UcSA8jAMN6uYAOfCru_zNxfgcUTVqW3A72qMSlVT2PKIJrYbpAOWvFJ7XJJG0a-0ERreCbmZ1gzRtF0IagxmkI9X3-Me0aQu7yceq8ZOouAZKZY5t-_d0Vq10wQHta0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Amber Heard\",\n    \"age\": 40,\n    \"gender\": \"female\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /actors/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE2MjUzNDI5NDkwMjUyMzkzMzQ0IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE2OTk1NDU4MDksImV4cCI6MTY5OTYzMjIwOSwiYXpwIjoiQVpNQUk3UDN6V0dselUxZ3VZTkNmZjk4WGtMSkh1OG0iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.k45_Dk6lfbS-JTjrJmxk4jNWmbcOctIr9DHjSfBELmvyD2R8X-LH9lCLhibsRWA0s5dtJII6aUc5aAoO8kwREMglqAuWPzIxpqoHyLEsR3wDvKYFr-Hj4LVxwe89Pb8BFKhKDisIWHvwME1Ll7-sfzAYlRvDeoEBPKVRTbGxmzUOfC5Rt04FqHHpI_TURe5YeqkQnyYYe0ZUL6JkbGjY74UcSA8jAMN6uYAOfCru_zNxfgcUTVqW3A72qMSlVT2PKIJrYbpAOWvFJ7XJJG0a-0ERreCbmZ1gzRtF0IagxmkI9X3-Me0aQu7yceq8ZOouAZKZY5t-_d0Vq10wQHta0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Johnny Depp\",\n    \"age\": 43,\n    \"gender\": \"male\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /actors/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE2MjUzNDI5NDkwMjUyMzkzMzQ0IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE2OTk1NDU4MDksImV4cCI6MTY5OTYzMjIwOSwiYXpwIjoiQVpNQUk3UDN6V0dselUxZ3VZTkNmZjk4WGtMSkh1OG0iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.k45_Dk6lfbS-JTjrJmxk4jNWmbcOctIr9DHjSfBELmvyD2R8X-LH9lCLhibsRWA0s5dtJII6aUc5aAoO8kwREMglqAuWPzIxpqoHyLEsR3wDvKYFr-Hj4LVxwe89Pb8BFKhKDisIWHvwME1Ll7-sfzAYlRvDeoEBPKVRTbGxmzUOfC5Rt04FqHHpI_TURe5YeqkQnyYYe0ZUL6JkbGjY74UcSA8jAMN6uYAOfCru_zNxfgcUTVqW3A72qMSlVT2PKIJrYbpAOWvFJ7XJJG0a-0ERreCbmZ1gzRtF0IagxmkI9X3-Me0aQu7yceq8ZOouAZKZY5t-_d0Vq10wQHta0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/actors/2",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"actors",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE2MjUzNDI5NDkwMjUyMzkzMzQ0IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE2OTk1NDU4MDksImV4cCI6MTY5OTYzMjIwOSwiYXpwIjoiQVpNQUk3UDN6V0dselUxZ3VZTkNmZjk4WGtMSkh1OG0iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.k45_Dk6lfbS-JTjrJmxk4jNWmbcOctIr9DHjSfBELmvyD2R8X-LH9lCLhibsRWA0s5dtJII6aUc5aAoO8kwREMglqAuWPzIxpqoHyLEsR3wDvKYFr-Hj4LVxwe89Pb8BFKhKDisIWHvwME1Ll7-sfzAYlRvDeoEBPKVRTbGxmzUOfC5Rt04FqHHpI_TURe5YeqkQnyYYe0ZUL6JkbGjY74UcSA8jAMN6uYAOfCru_zNxfgcUTVqW3A72qMSlVT2PKIJrYbpAOWvFJ7XJJG0a-0ERreCbmZ1gzRtF0IagxmkI9X3-Me0aQu7yceq8ZOouAZKZY5t-_d0Vq10wQHta0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /movies/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE2MjUzNDI5NDkwMjUyMzkzMzQ0IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE2OTk1NDU4MDksImV4cCI6MTY5OTYzMjIwOSwiYXpwIjoiQVpNQUk3UDN6V0dselUxZ3VZTkNmZjk4WGtMSkh1OG0iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.k45_Dk6lfbS-JTjrJmxk4jNWmbcOctIr9DHjSfBELmvyD2R8X-LH9lCLhibsRWA0s5dtJII6aUc5aAoO8kwREMglqAuWPzIxpqoHyLEsR3wDvKYFr-Hj4LVxwe89Pb8BFKhKDisIWHvwME1Ll7-sfzAYlRvDeoEBPKVRTbGxmzUOfC5Rt04FqHHpI_TURe5YeqkQnyYYe0ZUL6JkbGjY74UcSA8jAMN6uYAOfCru_zNxfgcUTVqW3A72qMSlVT2PKIJrYbpAOWvFJ7XJJG0a-0ERreCbmZ1gzRtF0IagxmkI9X3-Me0aQu7yceq8ZOouAZKZY5t-_d0Vq10wQHta0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies/1",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE2MjUzNDI5NDkwMjUyMzkzMzQ0IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE2OTk1NDU4MDksImV4cCI6MTY5OTYzMjIwOSwiYXpwIjoiQVpNQUk3UDN6V0dselUxZ3VZTkNmZjk4WGtMSkh1OG0iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.k45_Dk6lfbS-JTjrJmxk4jNWmbcOctIr9DHjSfBELmvyD2R8X-LH9lCLhibsRWA0s5dtJII6aUc5aAoO8kwREMglqAuWPzIxpqoHyLEsR3wDvKYFr-Hj4LVxwe89Pb8BFKhKDisIWHvwME1Ll7-sfzAYlRvDeoEBPKVRTbGxmzUOfC5Rt04FqHHpI_TURe5YeqkQnyYYe0ZUL6JkbGjY74UcSA8jAMN6uYAOfCru_zNxfgcUTVqW3A72qMSlVT2PKIJrYbpAOWvFJ7XJJG0a-0ERreCbmZ1gzRtF0IagxmkI9X3-Me0aQu7yceq8ZOouAZKZY5t-_d0Vq10wQHta0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"a new movie\",\n    \"release_date\": \"2023-10-24T10:10:10.000\",\n    \"casting_site\": \"Hanoi\",\n    \"revenue\": 123456,\n    \"actor_ids\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /movies/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE2MjUzNDI5NDkwMjUyMzkzMzQ0IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE2OTk1NDU4MDksImV4cCI6MTY5OTYzMjIwOSwiYXpwIjoiQVpNQUk3UDN6V0dselUxZ3VZTkNmZjk4WGtMSkh1OG0iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.k45_Dk6lfbS-JTjrJmxk4jNWmbcOctIr9DHjSfBELmvyD2R8X-LH9lCLhibsRWA0s5dtJII6aUc5aAoO8kwREMglqAuWPzIxpqoHyLEsR3wDvKYFr-Hj4LVxwe89Pb8BFKhKDisIWHvwME1Ll7-sfzAYlRvDeoEBPKVRTbGxmzUOfC5Rt04FqHHpI_TURe5YeqkQnyYYe0ZUL6JkbGjY74UcSA8jAMN6uYAOfCru_zNxfgcUTVqW3A72qMSlVT2PKIJrYbpAOWvFJ7XJJG0a-0ERreCbmZ1gzRtF0IagxmkI9X3-Me0aQu7yceq8ZOouAZKZY5t-_d0Vq10wQHta0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Pirates of the Caribbean\",\n    \"release_date\": \"2020-10-24T10:10:10.000\",\n    \"casting_site\": \"Caribbean\",\n    \"revenue\": 123456,\n    \"actor_ids\": [1,2]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies/1",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /movies/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlR2RFFIb2ZIQTVGM2dFeDVBRTREQyJ9.eyJpc3MiOiJodHRwczovL21hbmh2Z3QudWsuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE2MjUzNDI5NDkwMjUyMzkzMzQ0IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE2OTk1NDU4MDksImV4cCI6MTY5OTYzMjIwOSwiYXpwIjoiQVpNQUk3UDN6V0dselUxZ3VZTkNmZjk4WGtMSkh1OG0iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9yLWRldGFpbHMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllLWRldGFpbHMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.k45_Dk6lfbS-JTjrJmxk4jNWmbcOctIr9DHjSfBELmvyD2R8X-LH9lCLhibsRWA0s5dtJII6aUc5aAoO8kwREMglqAuWPzIxpqoHyLEsR3wDvKYFr-Hj4LVxwe89Pb8BFKhKDisIWHvwME1Ll7-sfzAYlRvDeoEBPKVRTbGxmzUOfC5Rt04FqHHpI_TURe5YeqkQnyYYe0ZUL6JkbGjY74UcSA8jAMN6uYAOfCru_zNxfgcUTVqW3A72qMSlVT2PKIJrYbpAOWvFJ7XJJG0a-0ERreCbmZ1gzRtF0IagxmkI9X3-Me0aQu7yceq8ZOouAZKZY5t-_d0Vq10wQHta0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://manhvgt-udacity-capstone.onrender.com/movies/2",
+							"protocol": "https",
+							"host": [
+								"manhvgt-udacity-capstone",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"movies",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
