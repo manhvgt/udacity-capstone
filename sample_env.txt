@@ -1,0 +1,18 @@
+This is a sample content for file .env
+The file .env should be put in project root directory. (udacity-capstone)
+
+# Authentication
+AUTH0_DOMAIN = "yourDomain"
+ALGORITHMS = "[RS256]"
+API_AUDIENCE = "sample"
+LOGIN_URL="https://{yourDomain}/authorize?response_type=token&scope=openid%20profile&client_id={yourClientId}&redirect_uri=http://jwt.io&connection={connectionToTest}"
+
+# DB
+DB_DNS = "127.0.0.1:5432"
+DB_USERNAME = "sample_username"
+DB_PASSWORD = "sample_password"
+DB_NAME = "database_name"
+DB_NAME_TEST = "test_database_name"
+DB_URL= "url_to_database"
+DB_URL_INTERNAL= "url_to_database_internal_use"
+DEBUG_MODE=""
